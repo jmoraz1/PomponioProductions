@@ -21,7 +21,7 @@ public class Writer {
     public Date dateOfBirth;
 
     @Transient
-    private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+    private SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
     public String getCreatedAsShort() {
         return format.format(dateOfBirth);
     }

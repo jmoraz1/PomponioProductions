@@ -23,11 +23,15 @@ public class Script {
     public String genre;
     @Column(name="plot")
     public String plot;
+    @Column(name="writer")
+    public String writer;
 
-    public Script(String name, String genre, String plot) {
+
+    public Script(String name, String genre, String plot, String writer) {
         this.name = name;
         this.genre = genre;
         this.plot = plot;
+        this.writer=writer;
     }
 
     public Script() {
@@ -63,5 +67,13 @@ public class Script {
 
     public void setPlot(String plot) {
         this.plot = plot;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 }

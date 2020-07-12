@@ -3,6 +3,7 @@ import java.text.ParseException;
 
 import com.cenfotec.pomponio.domain.Script;
 import com.cenfotec.pomponio.service.ScriptService;
+import com.cenfotec.pomponio.service.WriterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,12 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ScriptController {
     @Autowired
     ScriptService scriptService;
+    @Autowired
+    WriterService writerService;
 
     @RequestMapping("/scripts")
     public String index(Model model) throws ParseException {
         model.addAttribute("script", new Script());
         model.addAttribute("scripts",
                 scriptService.getAll());
+        model.addAttribute("writers",
+                writerService.getAll());
 
 
         return "scripts";
@@ -32,4 +37,7 @@ public class ScriptController {
         return "scripts";
 
     }
+
+
+    
 }
