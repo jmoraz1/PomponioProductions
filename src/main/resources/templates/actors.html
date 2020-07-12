@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"></meta>
+    <meta http-equiv="Content-Type" content="text/html"></meta>
+    <title>Actors</title>
+</head>
+<body>
+<div>
+    <h1>Actores</h1>
+    <ul>
+        <div th:each="entry,status : ${actor}">
+            <li>
+                <h4>
+                    <span th:text="${entry.name}">TITLE</span>
+                </h4>
+                <p>
+                    <small><i></i> <span
+                            th:text="${entry.createdAsShort}">CREATED</span> </small>
+                </p>
+                <p>
+                    <span th:text="${entry.gender}">SUMMARY</span>
+                </p>
+            </li>
+        </div>
+    </ul>
+</div>
+</body>
+</html>

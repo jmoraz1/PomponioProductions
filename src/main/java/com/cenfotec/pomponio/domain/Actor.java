@@ -17,98 +17,99 @@ public class Actor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name="nombre")
-	public String nombre;
-	@Column(name="genero")
-	public String genero;
-	@Column(name="fechaNacimiento")
-	public Date fechaNacimiento;
-	@Column(name="estatura")
-	public double estatura;
-	@Column(name="complexionCorporal")
-	public String complexionCorporal;
-	@Column(name="colorOjos")
-	public String colorOjos;
-	@Column(name="colorPelo")
-	public String colorPelo;
+	@Column(name="name")
+	public String name;
+	@Column(name="gender")
+	public String gender;
+	@Column(name="dateOfBirth")
+	public Date dateOfBirth;
+	@Column(name="height")
+	public double height;
+	@Column(name="built")
+	public String built;
+	@Column(name="eyeColor")
+	public String eyeColor;
+	@Column(name="hairColor")
+	public String hairColor;
 
 	@Transient
 	private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 	public String getCreatedAsShort() {
-		return format.format(fechaNacimiento);
+		return format.format(dateOfBirth);
 	}
 
-	public Actor(String nombre, String genero, String fechaNacimiento, double estatura, String complexionCorporal, String colorOjos, String colorPelo) throws ParseException {
-		this.nombre = nombre;
-		this.genero = genero;
-		this.fechaNacimiento = format.parse(fechaNacimiento);
-		this.estatura = estatura;
-		this.complexionCorporal = complexionCorporal;
-		this.colorOjos = colorOjos;
-		this.colorPelo = colorPelo;
+	public Actor(String name, String gender, String dateOfBirth, double height, String built, String eyeColor, String hairColor) throws ParseException {
+		this.name = name;
+		this.gender = gender;
+		this.dateOfBirth = format.parse(dateOfBirth);
+		this.height = height;
+		this.built = built;
+		this.eyeColor = eyeColor;
+		this.hairColor = hairColor;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public Long getId() {
+		return id;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getGenero() {
-		return genero;
+	public String getName() {
+		return name;
 	}
 
-	public void setGenero(String genero) {
-		this.genero = genero;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
+	public String getGender() {
+		return gender;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
-	public double getEstatura() {
-		return estatura;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
-	public void setEstatura(double estatura) {
-		this.estatura = estatura;
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
-	public String getComplexionCorporal() {
-		return complexionCorporal;
+	public double getHeight() {
+		return height;
 	}
 
-	public void setComplexionCorporal(String complexionCorporal) {
-		this.complexionCorporal = complexionCorporal;
+	public void setHeight(double height) {
+		this.height = height;
 	}
 
-	public String getColorOjos() {
-		return colorOjos;
+	public String getBuilt() {
+		return built;
 	}
 
-	public void setColorOjos(String colorOjos) {
-		this.colorOjos = colorOjos;
+	public void setBuilt(String built) {
+		this.built = built;
 	}
 
-	public String getColorPelo() {
-		return colorPelo;
+	public String getEyeColor() {
+		return eyeColor;
 	}
 
-	public void setColorPelo(String colorPelo) {
-		this.colorPelo = colorPelo;
+	public void setEyeColor(String eyeColor) {
+		this.eyeColor = eyeColor;
 	}
 
-	public SimpleDateFormat getFormat() {
-		return format;
+	public String getHairColor() {
+		return hairColor;
 	}
 
-	public void setFormat(SimpleDateFormat format) {
-		this.format = format;
+	public void setHairColor(String hairColor) {
+		this.hairColor = hairColor;
 	}
+
 }
