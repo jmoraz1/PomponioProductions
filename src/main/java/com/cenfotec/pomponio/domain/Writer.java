@@ -33,6 +33,9 @@ public class Writer {
         this.dateOfBirth = format.parse(dateOfBirth);
     }
 
+    public Writer() {
+    }
+
     public Long getId() {
         return id;
     }

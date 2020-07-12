@@ -3,9 +3,11 @@ package com.cenfotec.pomponio.service;
 import com.cenfotec.pomponio.domain.Writer;
 import com.cenfotec.pomponio.repository.WriterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class WriterService implements BaseService {
     @Autowired
     WriterRepository writerRepo;

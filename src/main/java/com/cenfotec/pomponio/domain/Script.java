@@ -30,6 +30,9 @@ public class Script {
         this.plot = plot;
     }
 
+    public Script() {
+    }
+
     public Long getId() {
         return id;
     }

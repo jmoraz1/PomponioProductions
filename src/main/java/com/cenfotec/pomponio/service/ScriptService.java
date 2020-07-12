@@ -3,9 +3,11 @@ package com.cenfotec.pomponio.service;
 import com.cenfotec.pomponio.domain.Script;
 import com.cenfotec.pomponio.repository.ScriptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ScriptService implements BaseService {
     @Autowired
     ScriptRepository scriptRepo;

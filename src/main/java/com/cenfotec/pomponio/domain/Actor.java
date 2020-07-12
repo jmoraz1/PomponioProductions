@@ -33,7 +33,7 @@ public class Actor {
 	public String hairColor;
 
 	@Transient
-	private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+	private SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 	public String getCreatedAsShort() {
 		return format.format(dateOfBirth);
 	}
@@ -46,6 +46,9 @@ public class Actor {
 		this.built = built;
 		this.eyeColor = eyeColor;
 		this.hairColor = hairColor;
+	}
+
+	public Actor() {
 	}
 
 	public Long getId() {

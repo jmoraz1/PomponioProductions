@@ -3,8 +3,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.cenfotec.pomponio.domain.Actor;
-import com.cenfotec.pomponio.service.ActorService;
+import com.cenfotec.pomponio.domain.Writer;
+import com.cenfotec.pomponio.service.WriterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -16,25 +16,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ActorController {
+public class WriterController {
     @Autowired
-    ActorService actorService;
-    
-    @RequestMapping("/actors")
-	public String index(Model model) throws ParseException {
-    	model.addAttribute("actor", new Actor()); 
-		model.addAttribute("actors",
-				actorService.getAll());
-		
-	
-		return "actors";
-	}
-    
-    @PostMapping("/actors")
-    public String registerActor(@ModelAttribute Actor actor) throws ParseException {
-        actorService.save(actor);
-        return "actors";
- 
+    WriterService writerService;
+
+    @RequestMapping("/writers")
+    public String index(Model model) throws ParseException {
+        model.addAttribute("writer", new Writer());
+        model.addAttribute("writers",
+                writerService.getAll());
+
+        return "writers";
+    }
+
+    @PostMapping("/writers")
+    public String registerWriter(@ModelAttribute Writer writer) throws ParseException {
+
+        writerService.save(writer);
+        return "writers";
+
     }
     @InitBinder
     public void initBinder(WebDataBinder binder) {

@@ -2,7 +2,7 @@
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Guionistas</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -18,34 +18,31 @@
 </nav>
 <div id="page-content-wrapper">
     <div class="container-fluid">
-        <h1>Registro de actores</h1>
+        <h1>Registro de guionistas</h1>
         <ul>
-            <form action="#" th:action="@{/actors}" th:object="${actor}" method="post">
-                <p>Nombre completo: <input type="text" th:field="*{name}"/></p>
+            <form action="#" th:action="@{/writers}" th:object="${writer}" method="post">
+                <p>Nombre: <input type="text" th:field="*{name}"/></p>
                 <p>Fecha de nacimiento: <input type="date" th:field="*{dateOfBirth}" /></p>
-                <p>Genero: <input type="text" th:field="*{gender}" /></p>
-                <p>Altura: <input type="text" th:field="*{height}" /></p>
-                <p>Color de ojos: <input type="text" th:field="*{eyeColor}" /></p>
-                <p>Color de pelo: <input type="text" th:field="*{hairColor}" /></p>
-                <p>Contextura: <input type="text" th:field="*{built}" /></p>
-                <p><input type="submit" value="Submit" />
+                <p>Direccion: <input type="text" th:field="*{address}" /></p>
+                <p>Email: <input type="text" th:field="*{email}" /></p>
+                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
             </form>
-            <div th:each="entry,status : ${actors}">
-                <li>
-                    <h4>
-                        <span th:text="${entry.name}">Nombre:</span>
-                    </h4>
-                    <p>
-                        <small><i></i> <span
-                                th:text="${entry.createdAsShort}">Fecha de Nacimiento</span> </small>
-                    </p>
-                    <p>
-                        <span th:text="${entry.gender}">Genero</span>
-                    </p>
-                </li>
-            </div>
-        </ul>
 
+        </ul>
+    </div>
+    <div th:each="entry,status : ${writers}">
+        <li>
+            <h4>
+                <span th:text="${entry.name}">Nombre</span>
+            </h4>
+            <p>
+                <small><i></i> <span
+                        th:text="${entry.address}">Direccion</span> </small>
+            </p>
+            <p>
+                <span th:text="${entry.email}">Email</span>
+            </p>
+        </li>
     </div>
 
 

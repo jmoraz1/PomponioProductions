@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guiones</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<nav  class="navbar navbar-expand navbar-dark bg-primary"> <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarsExample02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"> <a class="nav-link"  th:href="@{/home}">Home <span class="sr-only">(current)</span></a> </li>
+        </ul>
+        <form class="form-inline my-2 my-md-0"> </form>
+    </div>
+</nav>
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+
+
+    </div>
+    <h1>Registro de guiones</h1>
+    <ul>
+        <form action="#" th:action="@{/scripts}" th:object="${script}" method="post">
+            <p>Nombre: <input type="text" th:field="*{name}"/></p>
+            <p>Genero: <input type="date" th:field="*{genre}" /></p>
+            <p>Idea central: <input type="text" th:field="*{plot}" /></p>
+        </form>
+        <div th:each="entry,status : ${scripts}">
+            <li>
+                <h4>
+                    <span th:text="${entry.name}">Nombre</span>
+                </h4>
+                <p>
+                    <small><i></i> <span
+                            th:text="${entry.genre}">Genero</span> </small>
+                </p>
+                <p>
+                    <span th:text="${entry.plot}">Idea Central</span>
+                </p>
+            </li>
+        </div>
+    </ul>
+
+</div>
+</body>
+</html>
