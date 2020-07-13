@@ -3,6 +3,7 @@ package com.cenfotec.pomponio.service;
 import com.cenfotec.pomponio.domain.Actor;
 import com.cenfotec.pomponio.repository.ActorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,5 +35,14 @@ public class ActorService implements BaseService {
     @Override
     public <T> List<T> getAll() {
         return (List<T>) actorRepo.findAll();
+    }
+
+    public <T> List<T> findByGender(String gender) {
+
+        return (List<T>) actorRepo.findByGender(gender);
+    }
+    public <T> List<T> findByName(String name) {
+
+        return (List<T>) actorRepo.findByName(name);
     }
 }

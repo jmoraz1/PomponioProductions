@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="navbar" th:fragment="nav">
+
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li> <a th:href="@{/actors}">Registrar Actores</a> </li>
+            <li> <a th:href="@{/writers}">Registrar Guionistas</a> </li>
+            <li> <a th:href="@{/scripts}">Registrar Guiones</a> </li>
+
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

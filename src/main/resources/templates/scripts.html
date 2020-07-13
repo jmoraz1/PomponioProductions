@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype html >
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -8,39 +8,55 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<nav  class="navbar navbar-expand navbar-dark bg-primary"> <a href="#menu-toggle" id="menu-toggle" class="navbar-brand"><span class="navbar-toggler-icon"></span></a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-    <div class="collapse navbar-collapse" id="navbarsExample02">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"> <a class="nav-link"  th:href="@{/home}">Home <span class="sr-only">(current)</span></a> </li>
-        </ul>
-        <form class="form-inline my-2 my-md-0"> </form>
-    </div>
-</nav>
+<div th:replace="header :: head"></div>
+<div id="wrapper" class="toggled">
+    <div th:replace="navbar :: nav"></div>
+</div>
 <div id="page-content-wrapper">
-    <div class="container-fluid">
+
+        <div class="col-xs-6 container-fluid">
+            <h1>Registro de guiones</h1>
+            <form action="#" th:action="@{/scripts}" th:object="${script}" method="post">
+                <p>Nombre: <input type="text" th:field="*{name}"/></p>
+                <p>Genero:
+                    <select id="genero" th:field="*{genre}" >
+                        <div th:each="entry,status : ${generos}">
+                            <option th:value="${entry.key}" th:text="${entry.value}"/>
+                        </div>
+                    </select>
+                </p>
+                <p>Idea central: <input type="text" th:field="*{plot}" /></p>
+                <p>Guionista:
+                    <select id="writer" th:field="*{writer}" >
+                        <div th:each="entry,status : ${writers}">
+                            <option th:value="${entry.id}" th:text="${entry.name}"/>
+                        </div>
+                    </select>
+
+                </p>
+                <p><input type="submit" value="Registrar" /></p>
+            </form>
 
 
-    </div>
-    <h1>Registro de guiones</h1>
-    <ul>
-        <form action="#" th:action="@{/scripts}" th:object="${script}" method="post">
-            <p>Nombre: <input type="text" th:field="*{name}"/></p>
-            <p>Genero: <input type="date" th:field="*{genre}" /></p>
-            <p>Idea central: <input type="text" th:field="*{plot}" /></p>
-        </form>
+        </div>
+
         <div th:each="entry,status : ${scripts}">
-            <li>
-                <h4>
-                    <span th:text="${entry.name}">Nombre</span>
-                </h4>
-                <p>
-                    <small><i></i> <span
-                            th:text="${entry.genre}">Genero</span> </small>
-                </p>
-                <p>
-                    <span th:text="${entry.plot}">Idea Central</span>
-                </p>
-            </li>
+            <ul>
+                <li>
+                    <h4><span th:text="${entry.name}">Nombre</span>
+                    </h4>
+                    <p> Género:<span th:text="${entry.genre}">Genero</span> </small>
+                    </p>
+                    <p>Idea Central: <span th:text="${entry.plot}">Idea Central</span>
+
+                    </p>
+                    <p> Escritor: <span th:text="${entry.writer}"></span>
+
+                    </p>
+                </li>
+
+            </ul>
+
         </div>
     </ul>
 
