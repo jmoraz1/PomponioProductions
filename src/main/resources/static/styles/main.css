@@ -963,6 +963,8 @@ dl.row > dd + dt {
 }
 
 .nav {
+    position: fixed;
+    top: 0px;
     padding-right: 0;
 }
 
