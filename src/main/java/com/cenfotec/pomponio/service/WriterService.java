@@ -35,4 +35,8 @@ public class WriterService implements BaseService {
     public <T> List<T> getAll() {
         return (List<T>) writerRepo.findAll();
     }
+
+    public <T> T getByID(java.lang.String writer) {
+       return writerRepo.findByID(Long.parseLong(writer));
+    }
 }

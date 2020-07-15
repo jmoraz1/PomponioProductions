@@ -38,13 +38,13 @@
             <div th:each="entry,status : ${scripts}">
                 <ul>
                 <li>
-                    <h5><span th:text="${entry.name}">Nombre:</span>
+                    <h5><span th:text="${entry.Nombre}">Nombre</span>
                     </h5>
-                    <p> Género:<span th:text="${entry.genre}">Genero</span> </small>
+                    <p> Género: <span th:text="${entry.Genero}">Genero</span> </small>
                     </p>
-                    <p> Idea Central:<span th:text="${entry.plot}">Genero</span> </small>
+                    <p> Idea Central: <span th:text="${entry.IdeaCentral}">Genero</span> </small>
                     </p>
-                    <p> Guionista:<span th:text="${entry.writer}">Guionista</span> </small>
+                    <p> Guionista: <span th:text="${entry.Guionista}">Guionista</span> </small>
                     </p>
                 </li>
 

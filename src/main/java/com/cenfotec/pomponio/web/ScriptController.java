@@ -1,11 +1,14 @@
 package com.cenfotec.pomponio.web;
+import java.net.SecureCacheResponse;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.cenfotec.pomponio.domain.FormView;
 import com.cenfotec.pomponio.domain.Script;
+import com.cenfotec.pomponio.domain.Writer;
 import com.cenfotec.pomponio.service.ScriptService;
 import com.cenfotec.pomponio.service.WriterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +35,7 @@ public class ScriptController {
     @RequestMapping("/scriptsList")
     public String listScripts(Model model) throws ParseException {
         model.addAttribute("scripts",
-                scriptService.getAll());
+                mappearGuionEscritor(scriptService.getAll()));
         model.addAttribute("formView", new FormView());
 
         return "scriptsList";
@@ -47,14 +50,14 @@ public class ScriptController {
     }
     @PostMapping("/findScript/genre")
     public String buscarEdad(@ModelAttribute FormView form, BindingResult bindingResult, Model model) throws ParseException {
-        model.addAttribute("scripts",scriptService.findByGenre(form.getValues()));
+        model.addAttribute("scripts", mappearGuionEscritor(scriptService.findByGenre(form.getValues())));
         model.addAttribute("formView", new FormView());
         return "scriptsList";
     }
 
     @PostMapping("/findScript/name")
     public String buscarNombre(@ModelAttribute FormView form, BindingResult bindingResult, Model model) throws ParseException {
-        model.addAttribute("scripts",scriptService.findByName(form.getValues()));
+        model.addAttribute("scripts", mappearGuionEscritor(scriptService.findByName(form.getValues())));
         model.addAttribute("formView", new FormView());
 
         return "scriptsList";
@@ -75,6 +78,24 @@ public class ScriptController {
     
         return writerService.getAll();
     }
+
+    public List<Map<String, String>> mappearGuionEscritor( List<Script> scripts) {
+        ArrayList<Map<String, String>> listaGuiones=new ArrayList<>();
+        for (Script script: scripts
+             ) {
+            Map<String, String> datos = new HashMap<String, String>();
+            datos.put("Nombre", script.getName());
+            datos.put("Genero", script.getGenre());
+            datos.put("IdeaCentral", script.getPlot());
+            datos.put("Guionista", ((Writer) writerService.getByID(script.getWriter())).getName());
+            listaGuiones.add(datos);
+        }
+
+        return listaGuiones;
+    }
+
+
+
 
 
     

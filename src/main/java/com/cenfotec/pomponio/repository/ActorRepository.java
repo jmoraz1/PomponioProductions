@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface ActorRepository extends JpaRepository<Actor,
         Long> {
-    @Query("SELECT a FROM Actor a WHERE a.gender = gender")
+    @Query("SELECT a FROM Actor a WHERE a.gender = ?1")
     public List<Actor> findByGender(@Param("gender") String gender);
 
     @Query("SELECT a FROM Actor a WHERE a.name like %:name%")
