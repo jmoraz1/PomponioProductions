@@ -37,19 +37,19 @@
             </form>
             <div th:each="entry,status : ${actors}">
                 <li>
-                    <h5><span th:text="${entry.name}">Nombre:</span>
+                    <h5><span th:text="${entry.name}">Nombre</span>
                     </h5>
-                    <p> Género:<span th:text="${entry.gender}">Genero</span> </small>
+                    <p> Género: <span th:text="${entry.gender}">Genero</span> </small>
                     </p>
-                    <p> Fecha de nacimiento:<span th:text="${entry.dateOfBirth}">Fecha de nacimiento</span> </small>
+                    <p> Fecha de nacimiento: <span th:text="${entry.createdAsShort}">Fecha de nacimiento</span> </small>
                     </p>
-                    <p>Altura:<span th:text="${entry.height}">Altura</span> </small>
+                    <p>Altura: <span th:text="${entry.height}">Altura</span> </small>
                     </p>
-                    <p>Color de ojos:<span th:text="${entry.eyeColor}">Color de ojos</span> </small>
+                    <p>Color de ojos: <span th:text="${entry.eyeColor}">Color de ojos</span> </small>
                     </p>
-                    <p>Color de pelo:<span th:text="${entry.hairColor}">Color de pelo</span> </small>
+                    <p>Color de pelo: <span th:text="${entry.hairColor}">Color de pelo</span> </small>
                     </p>
-                    <p>Contextura:<span th:text="${entry.built}">Contextura</span> </small>
+                    <p>Contextura: <span th:text="${entry.built}">Contextura</span> </small>
                     </p>
                 </li>
             </div>

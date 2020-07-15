@@ -25,6 +25,10 @@ public class Script {
     public String plot;
     @Column(name="writer")
     public String writer;
+    @Column(name="status")
+    public String status;
+    @Column(name="actors")
+    public String actors;
 
 
     public Script(String name, String genre, String plot, String writer) {
@@ -32,6 +36,8 @@ public class Script {
         this.genre = genre;
         this.plot = plot;
         this.writer=writer;
+        this.status="";
+        this.actors="";
     }
 
     public Script() {
@@ -75,5 +81,21 @@ public class Script {
 
     public void setWriter(String writer) {
         this.writer = writer;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
     }
 }
