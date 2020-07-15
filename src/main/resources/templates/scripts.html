@@ -39,25 +39,6 @@
 
 
         </div>
-
-        <div th:each="entry,status : ${scripts}">
-            <ul>
-                <li>
-                    <h4><span th:text="${entry.name}">Nombre</span>
-                    </h4>
-                    <p> Género:<span th:text="${entry.genre}">Genero</span> </small>
-                    </p>
-                    <p>Idea Central: <span th:text="${entry.plot}">Idea Central</span>
-
-                    </p>
-                    <p> Escritor: <span th:text="${entry.writer}"></span>
-
-                    </p>
-                </li>
-
-            </ul>
-
-        </div>
     </ul>
 
 </div>

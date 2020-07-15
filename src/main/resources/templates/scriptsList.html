@@ -2,7 +2,7 @@
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de actores</title>
+    <title>Listado de guiones</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -16,11 +16,11 @@
 <div class="container" id="page-content-wrapper">
     <div class="row">
         <div class="container-fluid col-xs-6" >
-            <h1>Listado de actores</h1>
-            <form action="#" th:action="@{/findActor/age}" th:object="${formView}" method="post">
-                <p>Edad:
-                    <select id="rango" th:field="*{values}" >
-                        <div th:each="entry,status : ${rangos}">
+            <h1>Listado de guiones</h1>
+            <form action="#" th:action="@{/findScript/genre}" th:object="${formView}" method="post">
+                <p>Genero:
+                    <select id="genero" th:field="*{values}" >
+                        <div th:each="entry,status : ${generos}">
                             <option th:value="${entry.key}" th:text="${entry.value}"/>
                         </div>
                     </select>
@@ -28,30 +28,28 @@
                 </p>
 
             </form>
-            <form action="#" th:action="@{/findActor/name}" th:object="${formView}" method="post">
+            <form action="#" th:action="@{/findScript/name}" th:object="${formView}" method="post">
                 <p>Nombre:
                     <input type="text" th:field="*{values}" />
                 <p><input type="submit" value="Buscar"/></p>
                 </p>
 
             </form>
-            <div th:each="entry,status : ${actors}">
+            <div th:each="entry,status : ${scripts}">
+                <ul>
                 <li>
                     <h5><span th:text="${entry.name}">Nombre:</span>
                     </h5>
-                    <p> Género:<span th:text="${entry.gender}">Genero</span> </small>
+                    <p> Género:<span th:text="${entry.genre}">Genero</span> </small>
                     </p>
-                    <p> Fecha de nacimiento:<span th:text="${entry.dateOfBirth}">Fecha de nacimiento</span> </small>
+                    <p> Idea Central:<span th:text="${entry.plot}">Genero</span> </small>
                     </p>
-                    <p>Altura:<span th:text="${entry.height}">Altura</span> </small>
-                    </p>
-                    <p>Color de ojos:<span th:text="${entry.eyeColor}">Color de ojos</span> </small>
-                    </p>
-                    <p>Color de pelo:<span th:text="${entry.hairColor}">Color de pelo</span> </small>
-                    </p>
-                    <p>Contextura:<span th:text="${entry.built}">Contextura</span> </small>
+                    <p> Guionista:<span th:text="${entry.writer}">Guionista</span> </small>
                     </p>
                 </li>
+
+                </ul>
+
             </div>
         </div>
 

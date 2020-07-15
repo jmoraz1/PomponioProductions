@@ -61,7 +61,6 @@ public class ActorController {
     public String registerActor(@ModelAttribute Actor actor, BindingResult bindingResult, Model model) throws ParseException {
         actorService.save(actor);
         model.addAttribute("formView", new FormView());
-        model.addAttribute("actors",actorService.getAll());
         return "actors";
 
     }

@@ -35,4 +35,14 @@ public class ScriptService implements BaseService {
     public <T> List<T> getAll() {
         return (List<T>) scriptRepo.findAll();
     }
+
+    public <T> List<T> findByName(String name) {
+
+        return (List<T>) scriptRepo.findByName(name);
+    }
+
+    public <T> List<T> findByGenre(String genre) {
+
+        return (List<T>) scriptRepo.findByGenre(genre);
+    }
 }
