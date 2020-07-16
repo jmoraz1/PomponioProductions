@@ -35,8 +35,10 @@ public class ScriptController {
     @RequestMapping("/scriptsList")
     public String listScripts(Model model) throws ParseException {
         model.addAttribute("scripts",
-                mappearGuionEscritor(scriptService.getAll()));
+                scriptService.getAll());
         model.addAttribute("formView", new FormView());
+        model.addAttribute("script", new Script());
+
 
         return "scriptsList";
     }
@@ -63,6 +65,15 @@ public class ScriptController {
         return "scriptsList";
     }
 
+    @PostMapping("/moveToProd")
+    public String setearEnProduccion(@ModelAttribute FormView form, BindingResult bindingResult,Model model) throws ParseException {
+        Script script=scriptService.findByID(form.values);
+        script.status=true;
+        scriptService.save(script);
+
+        return "scriptsList";
+    }
+
     @ModelAttribute("generos")
     public Map<String, String> listaGeneros() {
         Map<String, String> generos = new HashMap<String, String>();
@@ -75,8 +86,28 @@ public class ScriptController {
     
     @ModelAttribute("writers")
     public List<Object> listaEscritores() {
+    	List<Object> list=writerService.getAll();
+        return list;
+    }
     
-        return writerService.getAll();
+    @ModelAttribute("scripts")
+    public List<Script> listaScripts() {
+        
+        return scriptService.getAll();
+    }
+
+    @ModelAttribute("scriptsSinProduccion")
+    public List<Script> listaScriptsSinProd() {
+        ArrayList<Script> scriptsSinProd=new ArrayList<>();
+        for (Object o:scriptService.getAll()) {
+            if(!((Script) o).getStatus()){
+                scriptsSinProd.add((Script) o);
+
+            }
+
+        }
+        return scriptsSinProd;
+
     }
 
     public List<Map<String, String>> mappearGuionEscritor( List<Script> scripts) {
@@ -84,10 +115,12 @@ public class ScriptController {
         for (Script script: scripts
              ) {
             Map<String, String> datos = new HashMap<String, String>();
+            datos.put("ID", Long.toString(script.getId()));
             datos.put("Nombre", script.getName());
             datos.put("Genero", script.getGenre());
             datos.put("IdeaCentral", script.getPlot());
-            datos.put("Guionista", ((Writer) writerService.getByID(script.getWriter())).getName());
+            datos.put("Guionista",script.getWriter().getName());
+            datos.put("Status", Boolean.toString(script.getStatus()));
             listaGuiones.add(datos);
         }
 

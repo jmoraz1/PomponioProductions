@@ -2,13 +2,8 @@ package com.cenfotec.pomponio.domain;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import java.util.Set;
+import javax.persistence.*;
 
 
 @Entity
@@ -16,7 +11,7 @@ import javax.persistence.Transient;
 public class Actor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private int id;
 	@Column(name="name")
 	public String name;
 	@Column(name="gender")
@@ -31,6 +26,8 @@ public class Actor {
 	public String eyeColor;
 	@Column(name="hairColor")
 	public String hairColor;
+	@ManyToMany
+	Set<Script> scripts;
 
 	@Transient
 	private SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -51,11 +48,11 @@ public class Actor {
 	public Actor() {
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

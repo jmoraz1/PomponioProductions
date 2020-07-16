@@ -45,4 +45,7 @@ public class ScriptService implements BaseService {
 
         return (List<T>) scriptRepo.findByGenre(genre);
     }
+    public <T> T findByID(String script) {
+        return scriptRepo.findByID(Long.parseLong(script));
+    }
 }

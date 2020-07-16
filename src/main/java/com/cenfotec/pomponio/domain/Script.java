@@ -2,13 +2,8 @@ package com.cenfotec.pomponio.domain;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import java.util.Set;
+import javax.persistence.*;
 
 
 @Entity
@@ -23,21 +18,24 @@ public class Script {
     public String genre;
     @Column(name="plot")
     public String plot;
-    @Column(name="writer")
-    public String writer;
     @Column(name="status")
-    public String status;
-    @Column(name="actors")
-    public String actors;
+    public boolean status;
+
+    @ManyToOne
+    @JoinColumn(name="writer_id", nullable=true)
+    private Writer writer;
+
+    @ManyToMany
+    Set<Actor> actors;
 
 
-    public Script(String name, String genre, String plot, String writer) {
+    public Script(String name, String genre, String plot, Writer writer) {
         this.name = name;
         this.genre = genre;
         this.plot = plot;
         this.writer=writer;
-        this.status="";
-        this.actors="";
+        this.status=false;
+        this.actors=null;
     }
 
     public Script() {
@@ -75,27 +73,31 @@ public class Script {
         this.plot = plot;
     }
 
-    public String getWriter() {
-        return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
-    }
-
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public String getActors() {
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Writer getWriter() {
+        return writer;
+    }
+
+    public void setWriter(Writer writer) {
+        this.writer = writer;
+    }
+
+    public Set<Actor> getActors() {
         return actors;
     }
 
-    public void setActors(String actors) {
+    public void setActors(Set<Actor> actors) {
         this.actors = actors;
     }
 }

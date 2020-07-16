@@ -35,21 +35,38 @@
                 </p>
 
             </form>
+            
+            <h1>Enviar guiones a produccion</h1>
+            <form action="#" th:action="@{/moveToProd}" th:object="${formView}" method="post">
+                <p>Genero:
+                    <select id="script" th:field="*{values}" >
+                        <div th:each="entry,status : ${scriptsSinProduccion}">
+                            <option th:value="${entry.id}" th:text="${entry.name}"/>
+                        </div>
+                    </select>
+                <p><input type="submit" value="Modificar"/></p>
+                </p>
+
+            </form>
+            
             <div th:each="entry,status : ${scripts}">
-                <ul>
-                <li>
-                    <h5><span th:text="${entry.Nombre}">Nombre</span>
-                    </h5>
-                    <p> Género: <span th:text="${entry.Genero}">Genero</span> </small>
-                    </p>
-                    <p> Idea Central: <span th:text="${entry.IdeaCentral}">Genero</span> </small>
-                    </p>
-                    <p> Guionista: <span th:text="${entry.Guionista}">Guionista</span> </small>
-                    </p>
-                </li>
-
-                </ul>
-
+            
+              <ul>
+                  <li>
+                      <h5><span th:text="${entry.name}">Nombre</span>
+                      </h5>
+                      <p> Género: <span th:text="${entry.genre}">Genero</span> </small>
+                      </p>
+                      <p> Idea Central: <span th:text="${entry.plot}">Genero</span> </small>
+                      </p>
+                      <p> Guionista: <span th:text="${entry.writer.name}">Guionista</span> </small>
+                      </p>
+                          <p>Listo para produccion:
+                          <input disabled="true" type="checkbox" th:checked="${entry.status}"></p>
+                      </p>
+                  </li>
+              </ul>
+             
             </div>
         </div>
 

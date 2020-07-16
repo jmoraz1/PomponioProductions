@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "TWriter")
@@ -19,6 +20,9 @@ public class Writer {
     public String address;
     @Column(name="dateOfBirth")
     public Date dateOfBirth;
+
+    @OneToMany(mappedBy="writer")
+    private Set<Script> scripts;
 
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");

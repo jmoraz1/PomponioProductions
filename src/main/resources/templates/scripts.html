@@ -27,7 +27,7 @@
                 </p>
                 <p>Idea central: <input type="text" th:field="*{plot}" /></p>
                 <p>Guionista:
-                    <select id="writer" th:field="*{writer}" >
+                    <select id="writer" th:field="*{writer.id}" >
                         <div th:each="entry,status : ${writers}">
                             <option th:value="${entry.id}" th:text="${entry.name}"/>
                         </div>
