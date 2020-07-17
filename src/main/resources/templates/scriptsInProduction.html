@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guiones para produccion</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="header :: head"></div>
+<div id="wrapper" class="toggled">
+    <div th:replace="navbar :: nav"></div>
+</div>
+<div class="container" id="page-content-wrapper">
+    <div class="row">
+        <div class="container-fluid col-xs-6" >
+            <h1>Guiones en produccion</h1>
+            <ul>
+                <div th:each="entry,status : ${scriptsEnProduccion}">
+                    <li>
+                        <h5><span th:text="${entry.name}">Nombre</span>
+                        </h5>
+                        <p> Género: <span  th:text="${entry.genre}">Genero</span> </small>
+                        </p>
+                        <p> Idea Central: <span th:text="${entry.plot}">Genero</span> </small>
+                        </p>
+                        <p> Guionista: <span th:text="${entry.writer.name}">Guionista</span> </small>
+                        </p>
+                        <p>Listo para produccion: <span th:text="${entry.status}">Guionista</span> </small>
+                        </p>
+                        <p>Actor:
+                            <span th:text="${entry.actor.name}">Guionista</span>
+                        </p>
+                        <p>Actriz:
+                            <span th:text="${entry.actress.name}">Guionista</span>
+                        </p>
+                    </li>
+                </div>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

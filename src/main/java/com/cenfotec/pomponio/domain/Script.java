@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Script {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
     @Column(name="name")
     public String name;
     @Column(name="genre")
@@ -22,11 +22,16 @@ public class Script {
     public boolean status;
 
     @ManyToOne
-    @JoinColumn(name="writer_id", nullable=true)
-    private Writer writer;
+    @JoinColumn(name="writer_id", nullable=false)
+    public Writer writer;
 
-    @ManyToMany
-    Set<Actor> actors;
+    @ManyToOne
+    @JoinColumn(name="actor", nullable=true)
+    public Actor actor;
+
+    @ManyToOne
+    @JoinColumn(name="actress", nullable=true)
+    public Actor actress;
 
 
     public Script(String name, String genre, String plot, Writer writer) {
@@ -35,7 +40,8 @@ public class Script {
         this.plot = plot;
         this.writer=writer;
         this.status=false;
-        this.actors=null;
+        this.actor=new Actor();
+        this.actress=new Actor();
     }
 
     public Script() {
@@ -93,11 +99,19 @@ public class Script {
         this.writer = writer;
     }
 
-    public Set<Actor> getActors() {
-        return actors;
+    public Actor getActor() {
+        return actor;
     }
 
-    public void setActors(Set<Actor> actors) {
-        this.actors = actors;
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+
+    public Actor getActress() {
+        return actress;
+    }
+
+    public void setActress(Actor actress) {
+        this.actress = actress;
     }
 }

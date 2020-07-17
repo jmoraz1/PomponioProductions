@@ -64,6 +64,7 @@ public class ActorController {
         return "actors";
 
     }
+
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -74,9 +75,9 @@ public class ActorController {
     @ModelAttribute("generos")
     public Map<String, String> listaGeneros() {
         Map<String, String> generos = new HashMap<String, String>();
-        generos.put("F", "Femenino");
-        generos.put("M", "Masculino");
-        generos.put("O", "Otro");
+        generos.put("Femenino", "Femenino");
+        generos.put("Masculino", "Masculino");
+        generos.put("Otro", "Otro");
         return generos;
     }
     

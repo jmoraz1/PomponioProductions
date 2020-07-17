@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Guiones para produccion</title>
+    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+<div th:replace="header :: head"></div>
+<div id="wrapper" class="toggled">
+    <div th:replace="navbar :: nav"></div>
+</div>
+<div class="container" id="page-content-wrapper">
+    <div class="row">
+        <div class="container-fluid col-xs-6" >
+            <h1>Asignar actores a guiones listos para produccion</h1>
+            <form action="#" th:action="@{/assignActors}" th:object="${script}" method="post">
+                <p>Guion:
+                    <select id="script" th:field="*{id}" >
+                        <div th:each="entry,status : ${scriptsConProduccion}">
+                            <option th:value="${entry.id}" th:text="${entry.name}"/>
+                        </div>
+                    </select>
+                </p>
+                <p>Actor:
+                    <select id="actor" th:field="*{actor.id}" >
+                        <div th:each="entry,status : ${actores}">
+                            <option th:value="${entry.id}" th:text="${entry.name}"/>
+                        </div>
+                    </select>
+                </p>
+                <p>Actriz:
+                    <select id="actress" th:field="*{actress.id}" >
+                        <div th:each="entry,status : ${actrices}">
+                            <option th:value="${entry.id}" th:text="${entry.name}"/>
+                        </div>
+                    </select>
+                </p>
+                <p><input type="submit" value="Asignar actores"/></p>
+
+
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

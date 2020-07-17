@@ -18,4 +18,7 @@ public interface ScriptRepository extends JpaRepository<Script,
 
     @Query("SELECT s FROM Script s WHERE s.id = ?1")
     public <T> T  findByID(@Param("id") Long id);
-} 
+
+    @Query("SELECT s FROM Script s WHERE s.status = ?1")
+    public List<Script>  findByStatus(@Param("status") Boolean status);
+}

@@ -36,7 +36,7 @@
 
             </form>
             
-            <h1>Enviar guiones a produccion</h1>
+            <h1>Marcar guion como listo para produccion</h1>
             <form action="#" th:action="@{/moveToProd}" th:object="${formView}" method="post">
                 <p>Genero:
                     <select id="script" th:field="*{values}" >
@@ -44,7 +44,7 @@
                             <option th:value="${entry.id}" th:text="${entry.name}"/>
                         </div>
                     </select>
-                <p><input type="submit" value="Modificar"/></p>
+                <p><input type="submit" value="Marcar"/></p>
                 </p>
 
             </form>
@@ -64,6 +64,7 @@
                           <p>Listo para produccion:
                           <input disabled="true" type="checkbox" th:checked="${entry.status}"></p>
                       </p>
+
                   </li>
               </ul>
              

@@ -12,34 +12,42 @@
 <div id="wrapper" class="toggled">
     <div th:replace="navbar :: nav"></div>
 </div>
-<div id="page-content-wrapper">
-    <div class="container-fluid">
-        <h1>Registro de guionistas</h1>
-        <ul>
-            <form action="#" th:action="@{/writers}" th:object="${writer}" method="post">
-                <p>Nombre: <input type="text" th:field="*{name}"/></p>
-                <p>Fecha de nacimiento: <input type="date" th:field="*{dateOfBirth}" /></p>
-                <p>Direccion: <input type="text" th:field="*{address}" /></p>
-                <p>Email: <input type="text" th:field="*{email}" /></p>
-                <p><input type="submit" value="Registrar" /></p>
-            </form>
+<div class="container" id="page-content-wrapper">
+    <div class="row">
+        <div class="container-fluid">
+            <h1>Registro de guionistas</h1>
+            <ul>
+                <form action="#" th:action="@{/writers}" th:object="${writer}" method="post">
+                    <p>Nombre: <input type="text" th:field="*{name}"/></p>
+                    <p>Fecha de nacimiento: <input type="date" th:field="*{dateOfBirth}" /></p>
+                    <p>Direccion: <input type="text" th:field="*{address}" /></p>
+                    <p>Email: <input type="text" th:field="*{email}" /></p>
+                    <p><input type="submit" value="Registrar" /></p>
+                </form>
 
-        </ul>
+            </ul>
+        </div>
+        <div>
+            <h1>Listado de guionistas</h1>
+            <div th:each="entry,status : ${writers}">
+                <li>
+                    <h4>
+                        <span th:text="${entry.name}">Nombre</span>
+                    </h4>
+                    <p>
+                        <small><i></i> <span
+                                th:text="${entry.address}">Direccion</span> </small>
+                    </p>
+                    <p>
+                        <span th:text="${entry.email}">Email</span>
+                    </p>
+                </li>
+            </div>
+        </div>
+
     </div>
-    <div th:each="entry,status : ${writers}">
-        <li>
-            <h4>
-                <span th:text="${entry.name}">Nombre</span>
-            </h4>
-            <p>
-                <small><i></i> <span
-                        th:text="${entry.address}">Direccion</span> </small>
-            </p>
-            <p>
-                <span th:text="${entry.email}">Email</span>
-            </p>
-        </li>
-    </div>
+
+
 
 
 </div>
