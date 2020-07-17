@@ -10,8 +10,16 @@ import java.text.ParseException;
 @Controller
 public class HomeController {
     @RequestMapping("/home")
-    public String index(Model model) throws ParseException {
+    public String home(Model model) throws ParseException {
         return "home";
+    }
+    @RequestMapping("/index")
+    public String index(Model model) throws ParseException {
+        return "index";
+    }
+    @RequestMapping("/contact")
+    public String contact(Model model) throws ParseException {
+        return "contact";
     }
 
 }

@@ -17,28 +17,27 @@
     <div class="row">
         <div class="container-fluid col-xs-6" >
             <h1>Guiones en produccion</h1>
-            <ul>
+
                 <div th:each="entry,status : ${scriptsEnProduccion}">
-                    <li>
-                        <h5><span th:text="${entry.name}">Nombre</span>
-                        </h5>
-                        <p> Género: <span  th:text="${entry.genre}">Genero</span> </small>
-                        </p>
-                        <p> Idea Central: <span th:text="${entry.plot}">Genero</span> </small>
-                        </p>
-                        <p> Guionista: <span th:text="${entry.writer.name}">Guionista</span> </small>
-                        </p>
-                        <p>Listo para produccion: <span th:text="${entry.status}">Guionista</span> </small>
-                        </p>
-                        <p>Actor:
-                            <span th:text="${entry.actor.name}">Guionista</span>
-                        </p>
-                        <p>Actriz:
-                            <span th:text="${entry.actress.name}">Guionista</span>
-                        </p>
-                    </li>
+
+                    <h5><span th:text="${entry.name}">Nombre</span>
+                    </h5>
+                    <p> Género: <span  th:text="${entry.genre}">Genero</span> </small>
+                    </p>
+                    <p> Idea Central: <span th:text="${entry.plot}">Genero</span> </small>
+                    </p>
+                    <p> Guionista: <span th:text="${entry.writer.name}">Guionista</span> </small>
+                    </p>
+                    <p>Listo para produccion: <span th:text="${entry.status}">Guionista</span> </small>
+                    </p>
+                    <p>Actor:
+                        <span th:text="${entry.actor.name}">Guionista</span>
+                    </p>
+                    <p>Actriz:
+                        <span th:text="${entry.actress.name}">Guionista</span>
+                    </p>
                 </div>
-            </ul>
+
 
         </div>
 
