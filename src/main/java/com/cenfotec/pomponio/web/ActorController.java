@@ -37,7 +37,6 @@ public class ActorController {
     @RequestMapping("/actorsList")
 	public String listActors(Model model) throws ParseException {
         model.addAttribute("formView", new FormView());
-		model.addAttribute("maleActors",actorService.findByGender("M"));
         model.addAttribute("actors",actorService.getAll());
 
         return "actorsList";
@@ -61,7 +60,10 @@ public class ActorController {
     public String registerActor(@ModelAttribute Actor actor, BindingResult bindingResult, Model model) throws ParseException {
         actorService.save(actor);
         model.addAttribute("formView", new FormView());
-        return "actorsList";
+        model.addAttribute("actors",actorService.getAll());
+        model.addAttribute("actor", new Actor());
+
+        return "actors";
 
     }
 

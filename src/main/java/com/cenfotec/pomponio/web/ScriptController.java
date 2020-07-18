@@ -60,7 +60,7 @@ public class ScriptController {
                 scriptService.getAll());
         model.addAttribute("formView", new FormView());
         model.addAttribute("script", new Script());
-
+        
 
         return "scriptsToProduction";
     }
@@ -100,11 +100,6 @@ public class ScriptController {
         return "scriptsList";
     }
 
-    @PostMapping("/registerActors")
-    public String guardarActores(@ModelAttribute Script script, BindingResult bindingResult,Model model) throws ParseException {
-
-        return "scriptsInProduction";
-    }
 
     @PostMapping("/assignActors")
     public String asignarActores(@ModelAttribute Script script, BindingResult bindingResult,Model model) throws ParseException {
@@ -112,7 +107,9 @@ public class ScriptController {
         fullScript.actor=script.actor;
         fullScript.actress=script.actress;
         scriptService.save(fullScript);
-        return "scriptsInProduction";
+        model.addAttribute("script", new Script());
+        model.addAttribute("formView", new FormView());
+        return "scriptsToProduction";
     }
 
     @ModelAttribute("generos")
@@ -158,8 +155,8 @@ public class ScriptController {
     }
 
     @ModelAttribute("scriptsConProduccion")
-    public List<Script> listaScriptsConProd() {
-        ArrayList<Script> scriptsEnProdSinActores=new ArrayList<>();
+    public List<Object> listaScriptsConProd() {
+        List<Object> scriptsEnProdSinActores=new ArrayList<>();
         for (Object o:scriptService.findByStatus("true")) {
             if(((Script) o).getActor()==null && ((Script) o).getActress()==null){
                 scriptsEnProdSinActores.add((Script) o);
