@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -30,9 +31,12 @@ public class WriterController {
     }
 
     @PostMapping("/writers")
-    public String registerWriter(@ModelAttribute Writer writer) throws ParseException {
+    public String registerWriter(@ModelAttribute Writer writer, BindingResult bindingResult, Model model) throws ParseException {
 
         writerService.save(writer);
+        model.addAttribute("writer", new Writer());
+        model.addAttribute("writers",
+                writerService.getAll());
         return "writers";
 
     }

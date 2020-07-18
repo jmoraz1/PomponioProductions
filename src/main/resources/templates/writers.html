@@ -1,28 +1,56 @@
 <!doctype html>
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Guionistas</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Guiones</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Boostrap Core CSS-->
+    <link th:href="@{/styles/bootstrap.min.css}" rel="stylesheet" />
+
+
+    <!-- Main CSS -->
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+
+    <!-- Animate CSS -->
+    <link th:href="@{/styles/animate.css}" rel="stylesheet" />
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley" />
+    <!-- Font awesome -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>
-<div th:replace="header :: head"></div>
 <div id="wrapper" class="toggled">
     <div th:replace="navbar :: nav"></div>
 </div>
-<div class="container" id="page-content-wrapper">
-    <div class="row">
-        <div class="container-fluid">
-            <h1>Registro de guionistas</h1>
-            <ul>
+<div class="wrapper">
+    <div class="col-md-12">
+        <!-- Logo -->
+        <div class="brand wow fadeIn" data-wow-delay="0.1s"> Pomponio Productions
+            <div class="title"> - Production Manager -  </div>
+        </div>
+        <!-- Start margin -->
+        <div class="margin-contact">
+            <!-- Start left column -->
+            <div class="box-contact col-md-5 col-xs-offset-1">
+                <h3 class="heading-inner">Registro de guionistas</h3>
+                <div class="hr"></div>
+                <div id="contact-area">
                 <form action="#" th:action="@{/writers}" th:object="${writer}" method="post">
-                    <p>Nombre: <input type="text" th:field="*{name}"/></p>
-                    <p>Fecha de nacimiento: <input type="date" th:field="*{dateOfBirth}" /></p>
-                    <p>Direccion: <input type="text" th:field="*{address}" /></p>
-                    <p>Email: <input type="text" th:field="*{email}" /></p>
-                    <p><input type="submit" value="Registrar" /></p>
+                    <label for="Name">Nombre completo:</label>
+                    <input id="Name" type="text" th:field="*{name}" />
+                    <label for="Birth" >Fecha de nacimiento:</label>
+                    <input id="Birth" type="date" th:field="*{dateOfBirth}" />
+                    <label for="Address">Direccion:</label>
+                    <input id="Address" type="text" th:field="*{address}" />
+                    <label for="Email">Email:</label>
+                    <input id="Email" type="text" th:field="*{email}" />
+
+                    <input type="submit" name="submit" value="Registrar" class="submit-button" />
                 </form>
 
             </ul>
@@ -30,24 +58,59 @@
         <div>
             <h1>Listado de guionistas</h1>
             <div th:each="entry,status : ${writers}">
-                <li>
-                    <h4>
-                        <span th:text="${entry.name}">Nombre</span>
-                    </h4>
-                    <p>
-                        <small><i></i> <span
-                                th:text="${entry.address}">Direccion</span> </small>
-                    </p>
-                    <p>
-                        <span th:text="${entry.email}">Email</span>
-                    </p>
-                </li>
+                <h5><span th:text="${entry.name}">Nombre</span>
+                </h5>
+                <p> Direccion: <span th:text="${entry.address}">Address</span> </small>
+                </p>
+                <p> Email: <span th:text="${entry.email}">Email</span> </small>
+                </p>
+                <p> Fecha de nacimiento: <span th:text="${entry.createdAsShort}">Fecha de nacimiento</span> </small>
+                </p>
             </div>
         </div>
 
+            </div>
+
+        </div>
+        <!-- End left column -->
+
+        <!-- Start right image -->
+        <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+            <img  th:src="@{/img/writer.jpg}"  alt="img" class="photo-contact"/>
+        </div>
+        <!-- End right image -->
+
     </div>
+    <!-- End margin -->
 
+    <div class="footer col-md-6 col-xs-offset-3">
+        <h5>Pomponio Productions LLC
+        </h5>
+    </div>
+    <!-- End footer -->
 
+</div>
+<!-- End col-md-12 -->
+
+</div>
+<!-- End wrapper -->
+
+<!--</div>-->
+<!-- jQuery Version 1.11.0 -->
+<script th:src="@{/js/jquery-1.11.0.js}"></script>
+
+<!-- Boostrap JS -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+=   <!-- Smooth scroll JS -->
+<script th:src="@{/js/smoothscroll.js}"></script>
+
+<!-- Wow JavaScript -->
+<script th:src="@{/js/wow.js}"></script>
+
+<script>
+       new WOW().init();
+   </script>
 
 
 </div>

@@ -1,45 +1,111 @@
-<!doctype html >
+<!doctype html>
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Guiones</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Boostrap Core CSS-->
+    <link th:href="@{/styles/bootstrap.min.css}" rel="stylesheet" />
+
+
+    <!-- Main CSS -->
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+
+    <!-- Animate CSS -->
+    <link th:href="@{/styles/animate.css}" rel="stylesheet" />
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Qwigley" />
+    <!-- Font awesome -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>
-<div th:replace="header :: head"></div>
 <div id="wrapper" class="toggled">
     <div th:replace="navbar :: nav"></div>
 </div>
-<div id="page-content-wrapper">
-
-        <div class="col-xs-6 container-fluid">
-            <h1>Registro de guiones</h1>
-            <form action="#" th:action="@{/scripts}" th:object="${script}" method="post">
-                <p>Nombre: <input type="text" th:field="*{name}"/></p>
-                <p>Genero:
-                    <select id="genero" th:field="*{genre}" >
-                        <div th:each="entry,status : ${generos}">
-                            <option th:value="${entry.key}" th:text="${entry.value}"/>
+<div class="wrapper">
+    <div class="col-md-12">
+        <!-- Logo -->
+        <div class="brand wow fadeIn" data-wow-delay="0.1s"> Pomponio Productions
+            <div class="title"> - Production Manager -  </div>
+        </div>
+        <!-- Start margin -->
+        <div class="margin-contact">
+            <!-- Start left column -->
+            <div class="box-contact col-md-5 col-xs-offset-1">
+                <h3 class="heading-inner">Registro de guiones</h3>
+                <div class="hr"></div>
+                <div id="contact-area">
+                    <form action="#" th:action="@{/scripts}" th:object="${script}" method="post">
+                        <label for="Name">Nombre completo:</label>
+                        <input id="Name" type="text" th:field="*{name}" />
+                        <div>
+                            <label>Genero:</label>
+                            <select id="Genero" th:field="*{genre}" >
+                                <div th:each="entry,status : ${generos}">
+                                    <option th:value="${entry.key}" th:text="${entry.value}"/>
+                                </div>
+                            </select>
                         </div>
-                    </select>
-                </p>
-                <p>Idea central: <input type="text" th:field="*{plot}" /></p>
-                <p>Guionista:
-                    <select id="writer" th:field="*{writer.id}" >
-                        <div th:each="entry,status : ${writers}">
-                            <option th:value="${entry.id}" th:text="${entry.name}"/>
+                        <label for="Plot">Idea Central:</label>
+                        <input id="Plot" type="text" th:field="*{plot}" />
+                        <div>
+                            <label>Guionista:</label>
+                            <select id="writer" th:field="*{writer.id}" >
+                                <div th:each="entry,status : ${writers}">
+                                    <option th:value="${entry.id}" th:text="${entry.name}"/>
+                                </div>
+                            </select>
                         </div>
-                    </select>
+                        <input type="submit" name="submit" value="Registrar" class="submit-button" />
+                    </form>
+                </div>
 
-                </p>
-                <p><input type="submit" value="Registrar" /></p>
-            </form>
+            </div>
+            <!-- End left column -->
 
+            <!-- Start right image -->
+            <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
+                <img  th:src="@{/img/script.jpg}"  alt="img" class="photo-contact"/>
+            </div>
+            <!-- End right image -->
 
         </div>
-    </ul>
+        <!-- End margin -->
+
+        <div class="footer col-md-6 col-xs-offset-3">
+            <h5>Pomponio Productions LLC
+            </h5>
+        </div>
+        <!-- End footer -->
+
+    </div>
+    <!-- End col-md-12 -->
+
+</div>
+<!-- End wrapper -->
+
+<!--</div>-->
+<!-- jQuery Version 1.11.0 -->
+<script th:src="@{/js/jquery-1.11.0.js}"></script>
+
+<!-- Boostrap JS -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+=   <!-- Smooth scroll JS -->
+<script th:src="@{/js/smoothscroll.js}"></script>
+
+<!-- Wow JavaScript -->
+<script th:src="@{/js/wow.js}"></script>
+
+<script>
+       new WOW().init();
+   </script>
+
 
 </div>
 </body>

@@ -69,6 +69,7 @@ public class ScriptController {
     public String registerScript(@ModelAttribute Script script, BindingResult bindingResult, Model model) throws ParseException {
         scriptService.save(script);
         model.addAttribute("script", new Script());
+        
         return "scripts";
 
     }
@@ -92,6 +93,9 @@ public class ScriptController {
         Script script=scriptService.findByID(form.values);
         script.status=true;
         scriptService.save(script);
+        model.addAttribute("script", new Script());
+        model.addAttribute("formView", new FormView());
+
 
         return "scriptsList";
     }
@@ -108,7 +112,7 @@ public class ScriptController {
         fullScript.actor=script.actor;
         fullScript.actress=script.actress;
         scriptService.save(fullScript);
-        return "home";
+        return "scriptsInProduction";
     }
 
     @ModelAttribute("generos")

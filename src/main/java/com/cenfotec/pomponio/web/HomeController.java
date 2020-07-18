@@ -21,5 +21,9 @@ public class HomeController {
     public String contact(Model model) throws ParseException {
         return "contact";
     }
+    @RequestMapping("/index-work")
+    public String index_work(Model model) throws ParseException {
+        return "index-work";
+    }
 
 }
